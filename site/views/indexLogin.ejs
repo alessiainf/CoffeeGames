@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="it">
+    <head> 
+
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexLogin.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src ="..\javascript\indexLogin.js"></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body onload="SavedData();">
+
+        <a class="navbar" href="/home">
+            <div class="logo">
+                <img class="img" src="../assets/icons/coffeeCup64.png">
+            </div>
+            <div class="nome"> CoffeeGames</div>
+        </a>
+        
+        <section>
+            <div class="wrapper">
+                <div class="center">
+                    <div class="top">
+                        <h2> Login</h2>
+
+                        <!-- controllo errore-->
+                        <% if (loginError) { %>
+                            <div class="Scritta" style="color:crimson; font-weight: bold;">*Email e/o password errati</div>
+                        <% } %>
+
+                        <% if (chekPswError) { %>
+                            <div class="Scritta" style="color:crimson; font-weight: bold;">*Password errata</div>
+                        <% } %>
+                    </div>
+                    <form action="/login" method="post" name="loginForm">
+                        <div class="Text_Field">
+                            <input type="text" id="email" name ="loginUser" size ="30" placeholder="Username" onchange="StoreData();" required>  
+                        </div>
+                        <div class="Text_Field">
+                            <input type="password" id="psw" name="loginPassword" size ="30" placeholder="Password" onchange="StoreData();"  required>  
+                        </div>
+                        <div class = "Text_2">
+                            <div class="riga">
+                                <div class = "Ricordami" id="ricorda">
+                                    <input type = "checkbox" id="Ric" value ="Ricordami" name="Ric" onClick="StoreData();"> Ricordami
+                                </div>
+                                <div class = "Text_Link1">
+                                    <a class="Link1" href="/forget">Password dimenticata?</a>
+                                </div> 
+                            </div>
+                            <div class ="Bottone">
+                                <button type="submit" class="Log_in" onclick="Ricorda();">Login</button>
+                            </div> 
+                            <div class = "Text_Link2">
+                                Non sei ancora registrato?
+                                <a class="Link2" href="/signup">Registrati</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script>
+/*LOCAL STORAGE*/
+var Ricordami = document.getElementById("Ric");
+//localStorage.clear();
+
+
+function StoreData() {
+    if (Ricordami.checked) {
+        var email = document.getElementById("email");
+        var psw= document.getElementById("psw");
+        localStorage.SetPsw=psw.value;
+        localStorage.SetEmail=email.value;
+    }
+    else {
+        localStorage.SetPsw="";
+        localStorage.SetEmail="";
+    }
+}
+
+function SavedData() {
+    var email = document.getElementById("email");
+    var psw= document.getElementById("psw");
+    if(localStorage.SetEmail!=undefined && localStorage.SetPsw!=undefined) {
+        if(localStorage.SetEmail!="" && localStorage.SetPsw!="") {
+            email.value=localStorage.SetEmail;
+            psw.value=localStorage.SetPsw;
+            Ricordami.checked = true;
+        }
+    }
+}
+
+        </script>
+
+    </body>
+</html>

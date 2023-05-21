@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexSignUp.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src ="..\javascript\indexSignUp.js"></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body>
+
+        <a class="navbar" href="/home">
+            <div class="logo">
+                <img class="img" src="../assets/icons/coffeeCup64.png">
+            </div>
+            <div class="nome"> CoffeeGames</div>
+        </a>
+
+        <section>
+            <div class="wrapper">
+                <div class="center">
+                    <div class="top">
+                        <h2>Registrazione</h2> 
+                        
+                        <% if (signupError) { %>
+                            <div class="alert">User already exist!!</div>
+                        <% } %>
+                        
+                        <% if (chekPswError) { %>
+                            <div class="alert">Error password check</div>
+                        <% } %>
+                    </div>
+                    
+                    <form action="/signup" method="post" name="signupForm">
+
+                        <!--
+                        <div class = "Container">
+
+                            <div class = "Colonna">
+                                <div class="Text_Field">
+                                    <div class = "Scritta">Email</div>
+                                    <input type="email" name ="signupEmail" size ="40" placeholder="" required>  
+                                </div>
+                                <div class="Text_Field">
+                                    <div class = "Scritta">Password</div>
+                                    <input type="password" name="signupPassword" size ="40" placeholder="" required>  
+                                </div>
+                                <div class ="Text_Field">
+                                    <div class = "Scritta">Scegli la domanda</div>
+                                    <select size = 1  cols = 4 name="signupQuestion" required>
+                                        <option selected value="nessuna"> </option>  
+                                        <option value="Q1"> Nome del tuo primo amico</option>  
+                                        <option value="Q2">Nome del tuo primo animale domestico </option>  
+                                        <option value="Q3">Colore Preferito </option>  
+                                        <option value="Q4">Nome della scuola elementare da te frequentata </option> 
+                                    </select> 
+                                </div>
+                            </div>
+
+                            <div class = "Colonna">
+                                <div class="Text_Field">
+                                    <div class = "Scritta">Username</div>
+                                    <input type="text" name ="signupUser" size ="40" placeholder="" required>  
+                                </div>
+                                <div class="Text_Field">
+                                    <div class = "Scritta">Conferma Password</div>
+                                    <input type="password" name="signupPasswordCheck" size ="40" placeholder="" required>  
+                                </div>
+                                <div class="Text_Field">
+                                    <div class = "Scritta">Inserisci Risposta</div>
+                                    <input type="text" name ="signupResponse" size ="40" placeholder="" required>  
+                                </div>
+                            </div>
+
+                        </div>
+                        -->
+
+                        <div class = "Container2">
+                            <div class="Text_Field">
+                                <div class = "Scritta">Email</div>
+                                <input type="email" name ="signupEmail" size ="40" placeholder="" required>  
+                            </div>
+                            <div class="Text_Field">
+                                <div class = "Scritta" >Username</div>
+                                <input type="text" name ="signupUser" size ="40" maxlength="13" placeholder="" required>  
+                            </div>
+                            <div class="Text_Field">
+                                <div class = "Scritta">Password</div>
+                                <input type="password" name="signupPassword" size ="40" placeholder="" required>  
+                            </div>
+                            <div class="Text_Field">
+                                <div class = "Scritta">Conferma Password</div>
+                                <input type="password" name="signupPasswordCheck" size ="40" placeholder="" required>  
+                            </div>
+                            <div class ="Text_Field">
+                                <div class = "Scritta">Scegli la domanda</div>
+                                <select size = 1  cols = 4 name="signupQuestion" required>
+                                    <option selected value="nessuna"> </option>  
+                                    <option value="Q1">Nome del tuo primo amico</option>  
+                                    <option value="Q2">Nome del tuo primo animale domestico</option>  
+                                    <option value="Q3">Colore Preferito</option>  
+                                    <option value="Q4">Nome della scuola elementare da te frequentata</option> 
+                                </select> 
+                            </div>
+                            <div class="Text_Field">
+                                <div class = "Scritta">Inserisci Risposta</div>
+                                <input type="text" name ="signupResponse" size ="40" placeholder="" required>  
+                            </div>
+                        </div>
+
+                        <div class = "Text_2">
+                            <div class ="Bottone">
+                                <button type="submit" class="Log_in">Registrati</button>
+                            </div> 
+                            <div class = "Text_Link2">
+                                Hai già effettuato la registrazione?
+                                <a class="Link2" href="/login">Login</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../stylesheets/tic-tac-toe.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Progetto LTW</title>
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <div class = "PaginaTotale" id="PaginaTot"> 
+<!----------------------------------- NAVBAR --------------------------------------->
+        <header>
+            <div class="inner-width">
+            <div class="nomesito">
+                <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64W.png" alt=""></a>
+                <a href="/home"><div class="nome"> CoffeeGames</div></a>
+            </div>
+
+            <i class="menu-toggle-btn fas fa-bars"></i>
+            
+            <nav class="navbar">
+                <div class="links">
+                <a href="/home">Home</a>
+                <% if (successLogin) { %>
+                    <a href="/account">Account</a>
+                <% } %>
+                <a href="/games">Giochi</a>
+                <a href="/contacts">Contatti</a>
+                </div>
+            </nav>
+            </div>
+        </header>   
+<!--------------------------------- FINE NAVBAR ------------------------------------->
+
+        
+
+            <div class="flexcontainer" id="flexcon">
+                    <div class = "Container-Card">
+                    <div class="carduser1" id ="carduser1">
+                        <div class="infos">
+                            <% if (successLogin) { %>
+                            <div class="image"><img src="..\assets\userIcons\<%= user.icon %>.png"> </div>
+                            <div class="info">
+                                    <p class="nomeutente"><%= user.username %></p>
+                                    <p class="turno"> Giochi con la X </p>
+                                    <p class="livello"Lv. >Lv. <%= userRank.level %></p>
+                            </div>
+                            <% } else { %>
+                                <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                                <div class="info">
+                                        <p class="nomeutente">Guest 1</p>
+                                        <p class="turno"> Giochi con la X </p>
+                                        <p class="livello"> Lv. 0</p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                    <div class="container">
+                        <h1 id="Titolo">Tris</h1>
+                        <div id="gameboard">
+                            <div class="box" id="0"></div>
+                            <div class="box" id="1"></div>
+                            <div class="box" id="2"></div>
+                            <div class="box" id="3"></div>
+                            <div class="box" id="4"></div>
+                            <div class="box" id="5"></div>
+                            <div class="box" id="6"></div>
+                            <div class="box" id="7"></div>
+                            <div class="box" id="8"></div>
+                        </div>
+                        <button type="button" onclick="Restart();">Ricomincia</button>
+                    </div>
+                    <div class="carduser1" id ="carduser2">
+                        <div class="infos">
+                            <% if (successLogin) { %>
+                            <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                            <div class="info">
+                                <p class="nomeutente"> Guest </p>
+                                <p class="turno"> Giochi con la O </p>
+                                <p class="livello"> lv. 0</p>
+                            </div>
+                            <% } else { %>
+                                <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                                <div class="info">
+                                <p class="nomeutente">Guest 2</p>
+                                <p class="turno"> Giochi con la O </p>
+                                <p class="livello"> Lv. 0</p>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+<!--------------------------------- POPUP ------------------------------------->               
+        <div class="container2">
+            <div class="popup" id="popup">
+                <h2 id="Vincitore"> </h2>
+                <img src="..\assets\images\winner.png" id="img">
+                
+                <div class="bottoni">
+                    <% if (successLogin) { %>
+                        <button type="button" onclick="closePopup('<%= user.username %>');">Rivincita</button>
+                    <% } else { %>
+                        <button type="button" onclick="closePopup('NULL');">Rivincita</button> 
+                    <% } %>
+                    <% if (successLogin) { %>
+                        <a type="button" onclick="sendResult('<%= user.username %>')" href="/games" class="buttonlink">Esci</a> 
+                    <% } else { %>
+                        <a type="button" href="/games" class="buttonlink">Esci</a> 
+                    <% } %>
+                </div>
+            </div>
+        </div>  
+    <!--------------------------------- FINE POPUP ------------------------------------->               
+    </body>
+
+    <script type="application/javascript" src="../javascript/tic-tac-toe.js"></script> 
+    <script type="text/javascript">
+
+    /*Funzione per il toggle della navbar*/
+    $(".menu-toggle-btn").click(function(){
+            $(this).toggleClass("fa-times");
+            $(".navbar").toggleClass("active");
+        });
+
+    /*Inizio Responsive Design, appena carico la pagina, richiamo la funzione doThisScript*/
+    $(document).ready(function(){
+        doThisScript();
+    });
+
+    /*ogni volta che viene fatto un resize richiamo la funzione doThisScript*/
+    $(window).on('resize', function () {
+        doThisScript();
+    }); 
+
+    function doThisScript() {
+        // Studio il primo caso, larghezza compresa tra 1000 e 740
+        if($(window).width() < '1000' && $(window).width()>'740' ){
+            $(".Container-Card").append($("#carduser1"));
+            $(".Container-Card").append($("#carduser2"));     
+        }    
+
+        // Studio il secondo caso, larghezza compresa tra 740 e
+        else if($(window).width() <= '740'){
+            $(".PaginaTotale").append($("#carduser1"));
+            $(".PaginaTotale").append($("#carduser2"));
+        }
+
+        else{
+            $(".Container-Card").append($("#carduser1"));
+            $(".flexcontainer").append($("#carduser2"));
+        }
+    }
+      
+
+
+
+    </script>
+</html>

@@ -1,0 +1,296 @@
+@font-face {
+    font-family: hero;
+    src: url('../assets/fonts/Hero.otf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: hero;
+    scroll-behavior: smooth; 
+}
+
+body {
+    overflow-x: hidden;
+    background-image:url('../assets/images/loginBg.jpg');
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat;  
+    height: 100%;
+    width: 100%;
+}
+
+/*---------------------------------------NAVBAR-----------------------------------*/
+.navbar {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+    gap:10px; 
+}
+
+.navbar .nome {
+    color:  #ffffff;
+    font-size: 50px;
+    font-weight: 700;
+    z-index: 1; /*per il pointer*/
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.navbar .logo {
+    z-index: 1; /*per il pointer*/
+    cursor: pointer;
+}
+/*-------------------------------------FINE NAVBAR-----------------------------------*/
+
+
+/*---------------------------------------SECTION-----------------------------------*/
+
+
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    min-height: 100vh; 
+}
+
+.wrapper {
+    position:relative;
+    width: 400px;
+    height:400px;
+    background: transparent;
+    border: 2px solid rgb(214, 163, 214);
+    border-radius:20px;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 0 30px rgba(0,0,0, .5);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.wrapper .center {
+    width:100%;
+    padding: 40px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.center h2 {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.Text_Field {
+    padding-top: 30px;
+    position: relative;
+    width:100%;
+    height: 5%; 
+    border-bottom: 2px solid rgb(218, 218, 218);
+}
+
+::placeholder {
+    font-size: 18px;
+    color: rgb(201, 201, 201);
+    padding: 5px;
+}
+
+.Text_Field input {
+    width:100%;
+    height: 100%;
+    top:100%;
+    border:none;
+    outline:none;
+    color: #ffffff;
+    font-size: 20px;
+    background: none;
+}
+
+/*serve per evitare l'highlight del testo quando uso l'autofill nei textfield*/
+/*https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete*/
+input:-webkit-autofill { 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgb(255, 255, 255) !important
+}
+
+
+a {
+    text-decoration: none;
+    color: #d5c9ff;
+    font-family: hero;
+    font-size: 16px;
+}
+
+a:hover {
+    color: #7584d4;
+}
+
+.riga {
+    padding-top: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Ricordami {
+    display: flex;
+    gap: 5px;
+    font-size: 15px;
+    color: #d3d3d3;
+}
+
+.Link1 {
+    padding-top: 5%;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.Bottone {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+}
+
+.Bottone:hover {
+    transform: scale(1.03);
+}
+
+.Text_Link2 {
+    text-align: center;
+    transform: translateY(15px);
+    color: #B48FD9;
+}
+
+.Log_in {
+    font-size: 25px;
+    font-weight: 600;
+    background-color:rgb(0, 166, 207);
+    text-align: center;
+    color: #ffffff;
+    padding: 6px 30px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.Log_in:hover {
+    color:white;
+}
+
+.Link2 {
+    font-weight: bold;
+    font-size: 15px;
+} 
+
+/*---------------------------------------FINE SECTION-----------------------------------*/
+
+/*-------------------------------------RESPONSIVE DESIGN---------------------------------*/
+/*navbar*/
+@media (max-width:480px) {  
+    .navbar .nome{
+        font-size: 45px;
+    } 
+}
+
+@media (max-width:430px) {
+    .navbar .nome{
+        font-size: 40px;
+    }
+}
+
+@media (max-width:380px) {
+    .navbar .nome{
+        font-size: 35px;
+    }
+}
+
+@media (max-width:340px) {
+    .navbar .nome{
+        font-size: 30px;
+    }
+}
+
+/*login*/
+@media (max-width:500px) {  
+    .wrapper {
+        width: 350px;
+    }
+
+    .Link1 {
+        font-size: 14px;
+    }
+
+    .Ricordami {
+        font-size: 14px;
+    }
+
+    .Link2 {
+        font-weight: bold;
+        font-size: 14px;
+    } 
+
+    .Text_Link2 {
+        font-size: 14px;
+    }
+    
+}
+
+@media (max-width:440px) {  
+    .wrapper {
+        width: 300px;
+    }
+
+    .Link1 {
+        font-size: 14px;
+    }
+
+    .Ricordami {
+        font-size: 14px;
+    }
+
+    .riga {
+        gap: 40px;
+    }
+} 
+
+@media (max-width:380px) {  
+    .wrapper {
+        width: 250px;
+    }
+
+    .riga {
+        gap: 10px;
+    }
+
+    .Link1 {
+        font-size: 13px;
+    }
+
+    .Ricordami {
+        font-size: 13px;
+    }
+}
+
+
+@media (max-height:600px) {  
+    .wrapper {
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+}
+  
+  
+

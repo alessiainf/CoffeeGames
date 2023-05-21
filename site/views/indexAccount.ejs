@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+ 
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexAccount.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src =""></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body onload="return ProgressBar();">
+        <div class="wrapper">
+            <div class = "Container-Blurred" id = "ConBlurred">
+                <!----------------------------------NAVBAR---------------------------------------------------------------->
+                <header>
+                    <div class="inner-width">
+                      <div class="nomesito">
+                        <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64W.png" alt=""></a>
+                        <a href="/home"><div class="nome"> CoffeeGames</div></a>
+                      </div>
+              
+                      <i class="menu-toggle-btn fas fa-bars"></i>
+                      
+                      <nav class="navbar">
+                        <div class="links">
+                          <a href="/home">Home</a>
+                          <a href="/account">Account</a>
+                          <a href="/games">Giochi</a>
+                          <a href="/contacts">Contatti</a>
+                        </div>
+                      </nav>
+                    </div>
+                  </header>   
+                <!--------------------------FINE NAVBAR------------------------------------------>
+                <div class = "Flex-Container" >                                        
+                    <div class = "Colonna" >                                            
+                        <div class = "Account" >                                                
+                            <div class="card">
+                                <H2> ACCOUNT </H2>
+                                <div class="sopra">
+                                    <div class="icona">
+                                        <img src="../assets/userIcons/<%= usrSess.icon %>.png" alt="Person" class="iconautente">
+                                    </div>
+                                    
+                                    <p class="nomeutente"><%= usrSess.username %></p>
+                                    
+                                    <div class="livello">
+                                        Livello <%= usrSessRank.level %>
+                                    </div>
+
+                                    <div class="Container-pb Bordo">
+                                        <h4><%= usrSessRank.xp %> xp</h4>
+                                        
+                                        <div class="progress-bar" id="PB">
+                                            <div class="Appoggio"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                                
+                                <div class="containerbtn">
+                                    <div class = "RigaBtn" id="RIGA1">
+                                        <button class="btn draw-border" id="Bottone1" onclick="openPopupnome();">Cambia nome</button>
+                                        <button class="btn draw-border" id="Bottone2" onclick="openPopupicona();">Cambia icona</button>
+                                    </div>
+                                    <div class = "RigaBtn" id="RIGA2">
+                                    <button class="btn draw-border" id="Bottone3" onclick="openPopupAchievements();">Achievements</button>
+                                    <button class="btn draw-border" id="Bottone4" onclick="openPopupStatistiche();">Statistiche</button>
+                                    </div>
+                                    <div class = "RigaBtn" id="RIGA3">
+                                    <a class="btn draw-border" id="Bottone5" href="/reset">Cambia password</a>
+                                    <a class="btn draw-border" id="Bottone6" href="/logout">Logout</a>                                    
+                                    </div>
+                                    <div class = "RigaBtn" id="RIGA4">
+                                    <button class="btn draw-border" id="Bottone7" onclick="openPopupelimina();">Elimina Account</button>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class = "Colonna2" >                                      
+                        <div class = "Classifica">                                            
+                            <div class="card2">
+                                <H1> CLASSIFICA GENERALE</H1>
+                                <div class = "Riga2">
+                                    <div class = "Posizione" id="P">Posizione</div>
+                                    <div class = "Username">Username</div>
+                                    <div class = "Vittorie">Vittorie</div>
+                                </div>
+                                <% if(usr5Ranks[0].username != "not.defined") { %>
+                                <div class = "Riga">
+                                    <div class = "Posizione" id="P1"> 1°</div>
+                                    <div class = "Username" id="U">
+                                    <button class = "btn2" onclick="openPopupUtente1();"><%= usr5Ranks[0].username %></button>
+                                    </div>
+                                    <div class = "Vittorie" id="V"><%= usr5Ranks[0].wins %></div>
+                                </div>
+                                <% } else{ %>
+                                    <div class = "Riga">
+                                        <div class = "Posizione" id="P1"> 1°</div>
+                                        <div class = "Username" id="U">
+                                        <button class = "btn2">-</button>
+                                        </div>
+                                        <div class = "Vittorie" id="V">-</div>
+                                    </div>
+                                <% } %>
+                                <% if(usr5Ranks[1].username != "not.defined") { %>
+                                <div class = "Riga">
+                                    <div class = "Posizione" id="P2">2°</div>
+                                    <div class = "Username" id="U">
+                                        <button class = "btn2" onclick="openPopupUtente2();"><%= usr5Ranks[1].username %></button>
+                                    </div>
+                                    <div class = "Vittorie" id="V"><%= usr5Ranks[1].wins %></div>
+                                </div>
+                                <% } else{ %>
+                                    <div class = "Riga">
+                                        <div class = "Posizione" id="P2"> 2°</div>
+                                        <div class = "Username" id="U">
+                                        <button class = "btn2">-</button>
+                                        </div>
+                                        <div class = "Vittorie" id="V">-</div>
+                                    </div>
+                                <% } %>
+                                <% if(usr5Ranks[2].username != "not.defined") { %>
+                                <div class = "Riga">
+                                    <div class = "Posizione" id="P3">3°</div>
+                                    <div class = "Username" id="U">
+                                        <button class = "btn2" onclick="openPopupUtente3();"><%= usr5Ranks[2].username %></button>
+                                    </div>
+                                    <div class = "Vittorie" id="V"><%= usr5Ranks[2].wins %></div>
+                                </div>
+                                <% } else{ %>
+                                    <div class = "Riga">
+                                        <div class = "Posizione" id="P3"> 3°</div>
+                                        <div class = "Username" id="U">
+                                        <button class = "btn2">-</button>
+                                        </div>
+                                        <div class = "Vittorie" id="V">-</div>
+                                    </div>
+                                <% } %>
+                                <% if(usr5Ranks[3].username != "not.defined") { %>
+                                <div class = "Riga">
+                                    <div class = "Posizione" id="P4">4°</div>
+                                    <div class = "Username" id="U">
+                                        <button class = "btn2" onclick="openPopupUtente4();"><%= usr5Ranks[3].username %></button>
+                                    </div>
+                                    <div class = "Vittorie" id="V"><%= usr5Ranks[3].wins %></div>
+                                </div>
+                                <% } else{ %>
+                                    <div class = "Riga">
+                                        <div class = "Posizione" id="P4"> 4°</div>
+                                        <div class = "Username" id="U">
+                                        <button class = "btn2">-</button>
+                                        </div>
+                                        <div class = "Vittorie" id="V">-</div>
+                                    </div>
+                                <% } %>
+                                <% if(usr5Ranks[4].username != "not.defined") { %>
+                                <div class = "Riga">
+                                    <div class = "Posizione" id="P4">5°</div>
+                                <div class = "Username" id="U">
+                                    <button class = "btn2" onclick="openPopupUtente5();"><%= usr5Ranks[4].username %></button>
+                                </div>
+                                    <div class = "Vittorie" id="V"><%= usr5Ranks[4].wins %></div>
+                                </div>
+                                <% } else{ %>
+                                    <div class = "Riga">
+                                        <div class = "Posizione" id="P4"> 5°</div>
+                                        <div class = "Username" id="U">
+                                        <button class = "btn2">-</button>
+                                        </div>
+                                        <div class = "Vittorie" id="V">-</div>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div> 
+
+                        <div class = "popup-Utente" id = "PopupUtente">
+                            <div class="sopraPopup" id = "Sopra">
+                                <div class="iconaPopup" >
+                                    <img src="" alt="Person" class="iconautentePopup" id="IPU">
+                                </div>
+                                <div class = "MiniContainer" id ="Cont">
+                                    <p class="nomeutentePopup" id = "NP">Prova</p>
+                                    
+                                    <div class="livelloPopup" id = "LP">
+                                        Livello: <%= usr5Ranks[0].level %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                            
+                    </div>
+                </div>
+            </div>
+            <!--------------------------POPUP ACCOUNT----------------------------------------->
+            <div class="containerpopup">
+
+                <!--------------------------STATISTICHE----------------------------------------->
+                    <div class="popup" id="popupStatistiche">
+                        <button class = "Chiusura" onclick="closeStatistiche();"> X </button>
+                        <h5 id="STAT">STATISTICHE</h5>
+                        <div class = "ContainerTot"> 
+                        <div class = "ContainerGrafico">
+                            
+                            <div class = "Rettangolo"><div class = "V"><div class = "AppoggioStatistiche" id ="ASW"></div></div><div class ="Numeri"> <%= usrSessRank.wins %> </div></div>
+                        
+                    
+                            <div class = "Rettangolo"><div class = "R"><div class = "AppoggioStatistiche" id="ASL"></div></div> <div class ="Numeri"><%= usrSessRank.loses %></div></div>
+    
+                            <div class = "Rettangolo"><div class = "G"><div class = "AppoggioStatistiche" id="ASD"></div></div><div class ="Numeri"><%= usrSessRank.drows %></div></div>
+                       
+
+                        </div>
+                            
+                            <div class = "ContainerLeggenda">
+                                <div class="Quadrato" id="Vitt"> </div> <div class = "Leggenda">Vittorie</div>
+
+                                <div class="Quadrato" id="Sconf"></div> <div class = "Leggenda">Sconfitte</div>
+                           
+                                <div class="Quadrato" id="Par"> </div> <div class = "Leggenda">Pareggi</div>
+                            </div>
+
+                    </div>
+                    </div>
+                 
+
+                <!--------------------------ACHIEVEMENTS----------------------------------------->
+
+                <div class="popup" id="popupAchievements">
+                    <button class = "Chiusura" onclick="closeAchievements();"> X </button>
+                    <h5 id="h5ACH">ACHIEVEMENTS</h5>
+                    <div class = "ContainerTot" id ="ACH"> 
+                        <div class = "ContainerAch">
+
+                            <input type="radio" name="dotb" id="uno" value="0" onclick="IsChecked();">
+                                <div class = "Cerchio1">
+                                    <label for="uno" class="label2"><img src="../assets/images/neon.png" alt="" id="ach0"></label>
+                                </div>
+
+                            <input type="radio" name="dotb" id="due" value="1" onclick="IsChecked();">
+                                
+                                <div class = "Cerchio2">
+                                <label for="due" class="label2"> 
+                                        <img src="../assets/images/steampunk.png" alt="" id="ach1">
+                                </label> 
+                                <% if(usrSessRank.level < "50") { %><img src="../assets/images/lock.png" alt=""> <% } %>
+                                </div>
+                            
+
+                            <input type="radio" name="dotb" id="tre" value="2" onclick="IsChecked();">
+                                <div class = "Cerchio3">
+                                    <label for="tre" class="label2">
+                                        <img src="../assets/images/tropical.png" alt="" id="ach2">
+                                    </label> 
+                                    <% if(usrSessRank.level < "100") { %><img src="../assets/images/lock.png" alt="" > <% } %>
+                                </div>
+                
+                        </div>
+                            
+                            <div class = "ContainerTarghette">
+                                <div class="Targhetta">Livello: 0</div>
+
+                                <div class="Targhetta">Livello: 50</div>
+                        
+                                <div class="Targhetta">Livello: 100</div>
+                            </div>
+
+                    </div>
+                        
+                </div>
+
+                <!--------------------------CAMBIO NOME----------------------------------------->
+                <div class="popup" id="popupnome">
+                    <h1>Inserisci il nuovo nome utente:</h1>
+                    <form action="/account/userchange" method="post" name="nameForm">
+                        <div class="Text_Field">
+                            <input type="" name ="accountNameChange" size ="30" placeholder="Inserisci qui..." required>  
+                        </div>
+                        <div class="scelta1">
+                            <a type="button" class="buttonlink" onclick="closePopupnome();">Annulla</a>
+                            <button type="submit" class="buttonlink" onclick="" href="">Conferma</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!--------------------------CAMBIO ICONA----------------------------------------->
+                <div class="popup" id="popupicona">
+                    <h1>Seleziona la nuova icona:</h1>
+                    <form action="/account/iconchange" method="post" name="iconForm">
+                        <div class="iconscontainer"> 
+                            <input type="radio" name="dot" value="NULL" checked>
+                            <div class="riga">
+                                <input type="radio" name="dot" id="one" value="guest">
+                                <label for="one" class=" one"><img src="../assets/userIcons/guest.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="two" value="angry">
+                                <label for="two" class="two"><img src="../assets/userIcons/angry.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="three" value="book">
+                                <label for="three" class="three"><img src="../assets/userIcons/book.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="four" value="cool">
+                                <label for="four" class="four"><img src="../assets/userIcons/cool.png" alt="Person"></label>
+                            </div>
+                            <div class="riga">
+                                <input type="radio" name="dot" id="five" value="drink">
+                                <label for="five" class="five"><img src="../assets/userIcons/drink.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="six" value="guitar">
+                                <label for="six" class="six"><img src="../assets/userIcons/guitar.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="seven" value="gymbro">
+                                <label for="seven" class="seven"><img src="../assets/userIcons/gymbro.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="eight" value="happy">
+                                <label for="eight" class="eight"><img src="../assets/userIcons/happy.png" alt="Person"></label>
+                            </div>
+                            <div class="riga">
+                                <input type="radio" name="dot" id="nine" value="love">
+                                <label for="nine" class="nine"><img src="../assets/userIcons/love.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="ten" value="nerd">
+                                <label for="ten" class="ten"><img src="../assets/userIcons/nerd.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="eleven" value="sad">
+                                <label for="eleven" class="eleven"><img src="../assets/userIcons/sad.png" alt="Person"></label>
+                                <input type="radio" name="dot" id="twelve" value="scary">
+                                <label for="twelve" class="twelve"><img src="../assets/userIcons/scary.png" alt="Person"></label>
+                            </div>
+                        </div>
+                        <div class="scelta2">
+                            <a type="button" class="buttonlink" onclick="closePopupicona();">Annulla</a>
+                            <button type="submit" class="buttonlink" onclick="" href="">Conferma</button>    
+                        </div>
+                    </form>
+                </div>
+
+                <div class="popup" id="popupelimina">
+                    <h1>Sei sicuro di voler eliminare l'account?</h1>
+                    <h3>Una volta premuto su conferma, perderai tutti i progressi e non sarà
+                        possibile recuperare l'account.</h3>
+                    <form action="/account/delete" method="post" name="nameForm">
+                        <div class="scelta3">
+                            <a type="button" class="buttonlink" onclick="closePopupelimina();">Annulla</a>
+                            <button type="submit" class="buttonlink" onclick="" href="">Conferma</button>       
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div> 
+    </body>
+    <script type="text/javascript">
+        $(".menu-toggle-btn").click(function(){
+          $(this).toggleClass("fa-times");
+          $(".navbar").toggleClass("active");
+        });
+      </script>
+    <script>
+        //gestione apertura e chiusura del popup
+        let Blurred = document.getElementById("ConBlurred");
+        let PopupU = document.getElementById("PopupUtente");
+        let NomePopup = document.getElementById("NP");
+        let LevelPopup = document.getElementById("LP");
+        let ProgressBarLevel = document.getElementById("PB");
+
+
+        let popuptris=document.getElementById("popupnome");
+        let popupstatistiche=document.getElementById("popupStatistiche");
+        let popupAchievements=document.getElementById("popupAchievements");
+
+        function openPopupStatistiche() {
+            
+            popupstatistiche.classList.add("open-popup");
+            Blurred.classList.add("Blurra"); 
+            var wins = "<%= usrSessRank.wins%>";
+            var loses = "<%= usrSessRank.loses%>";
+            var draws = "<%= usrSessRank.drows%>";
+
+            $("#ASW").css({'background-color': 'rgb(183, 9, 252)'});
+            $("#ASL").css({'background-color': 'rgb(205, 23, 68)'});
+            $("#ASD").css({'background-color': 'rgb(22, 224, 180)'});
+             if(wins<100 && loses<100 && draws<100){
+                    $(".V").css({'width': (wins%100)+5+"%"});
+                    $(".R").css({'width': (loses%100)+5+"%"});
+                    $(".G").css({'width': (draws%100)+5+"%"});
+                    
+            }
+            else{
+                $(".V").css({'width': (wins%1000)*0.1+5+"%"});
+                $(".R").css({'width': (loses%1000)*0.1+5+"%"});
+                $(".G").css({'width': (draws%1000)*0.1+5+"%"});
+                
+            }
+            if(wins>=1000){
+                $(".V").css({'width': "100%"});
+                
+            }
+            if(loses>=1000){
+                $(".R").css({'width': "100%"});
+                
+            }
+            if(draws>=1000){
+                $(".G").css({'width': "100%"});
+                
+            }
+            
+            $(".AppoggioStatistiche").css({"animation-name":"ProgressStatistiche"});
+            $(".AppoggioStatistiche").css({"animation-duration":"0.75s"});
+        }
+
+            
+            function closeStatistiche() {
+                popupstatistiche.classList.remove("open-popup");
+                Blurred.classList.remove("Blurra");
+                $(".AppoggioStatistiche").css({"animation-name":""});
+            $(".AppoggioStatistiche").css({"animation-duration":""});
+            }
+
+            function openPopupAchievements() {
+            popupAchievements.classList.add("open-popup");
+            Blurred.classList.add("Blurra");
+            }
+            
+
+             
+            function closeAchievements() {
+                popupAchievements.classList.remove("open-popup");
+                Blurred.classList.remove("Blurra");
+                var bgValue = $("input[name='dotb']:checked").val();
+
+                fetch("/account/backgroundchange", {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify({
+                    bgValue: bgValue
+                })
+                }).then(console.log("Background changes"));
+
+            }
+
+
+            function openPopupnome() {
+               
+                popuptris.classList.add("open-popup");
+                Blurred.classList.add("Blurra"); 
+            }
+            function closePopupnome() {
+                popuptris.classList.remove("open-popup");
+                Blurred.classList.remove("Blurra");
+            }
+
+            function openPopupUtente1() {
+
+                PopupU.classList.add("open-popupUtente");
+                $("#IPU").attr("src","../assets/userIcons/<%= usr5[0].icon %>.png");
+                NomePopup.innerHTML="<%= usr5Ranks[0].username %>"; 
+                LevelPopup.innerHTML="Livello <%= usr5Ranks[0].level %>"; 
+                
+                
+           }
+
+            function openPopupUtente2() {
+
+                    PopupU.classList.add("open-popupUtente");
+                    $("#IPU").attr("src","../assets/userIcons/<%= usr5[1].icon %>.png");
+                    NomePopup.innerHTML="<%= usr5Ranks[1].username %>";  
+                    LevelPopup.innerHTML="Livello <%= usr5Ranks[1].level %>";  
+                    /*NomePopup.innerHTML="<%= usr5Ranks[1].xp %>"; */
+            }
+
+           function openPopupUtente3() {
+                
+                PopupU.classList.add("open-popupUtente");
+                $("#IPU").attr("src","../assets/userIcons/<%= usr5[2].icon %>.png");
+                NomePopup.innerHTML="<%= usr5Ranks[2].username %>";  
+                LevelPopup.innerHTML="Livello <%= usr5Ranks[2].level %>"; 
+           }
+           function openPopupUtente4() {
+                
+                PopupU.classList.add("open-popupUtente");
+                $("#IPU").attr("src","../assets/userIcons/<%= usr5[3].icon %>.png");
+                NomePopup.innerHTML="<%= usr5Ranks[3].username %>";  
+                LevelPopup.innerHTML="Livello <%= usr5Ranks[3].level %>"; 
+           }
+           function openPopupUtente5() {
+                
+                PopupU.classList.add("open-popupUtente");
+                $("#IPU").attr("src","../assets/userIcons/<%= usr5[4].icon %>.png");
+                NomePopup.innerHTML="<%= usr5Ranks[4].username %>";  
+                LevelPopup.innerHTML="Livello <%= usr5Ranks[4].level %>"; 
+           }
+           function closePopupUtente() {
+                PopupU.classList.remove("open-popupUtente");
+           }
+            
+
+        let popupcm=document.getElementById("popupicona");
+            function openPopupicona() {
+                popupcm.classList.add("open-popup");
+                Blurred.classList.add("Blurra"); 
+            }
+            function closePopupicona() {
+                popupcm.classList.remove("open-popup");
+                Blurred.classList.remove("Blurra");
+            }
+
+        let popupforza4=document.getElementById("popupelimina");
+            function openPopupelimina() {
+                popupforza4.classList.add("open-popup");
+                Blurred.classList.add("Blurra"); 
+            }
+            function closePopupelimina() {
+                popupforza4.classList.remove("open-popup");
+                Blurred.classList.remove("Blurra");
+            }
+            function ProgressBar(){
+                var Exp = "<%= usrSessRank.xp %>";
+                var Livello = "<%= usrSessRank.level %>";
+               
+                if(Livello<=5){
+                    
+                    $(".Appoggio").css({'background-color': '#28daf1'});
+                    if(Exp%10<=3 && Exp%10>0){
+                    $(".progress-bar").css({'width': 35});
+                    }
+                    else{
+                    $(".progress-bar").css({'width': (Exp%10)*11.5});
+                    }
+                    $(".Appoggio").css({"animation-name":"Progress"});
+                    $(".Appoggio").css({"animation-duration":"0.75s"});
+                }
+                else if(Livello>5 && Livello<25){
+                    $(".Appoggio").css({'background-color': '#28daf1'});
+                    if(Exp%50<=5 && Exp%50>0){
+                    $(".progress-bar").css({'width': 30});
+                    }
+                    else if(Exp%50<=10 && Exp%50>5){
+                    $(".progress-bar").css({'width': 46});
+                    }
+                    else{
+                    $(".progress-bar").css({'width': (Exp%50)*4.6});
+                    }
+                    $(".Appoggio").css({"animation-name":"Progress"});
+                    $(".Appoggio").css({"animation-duration":"0.75s"});
+                    
+                }
+                else{
+                    $(".Appoggio").css({'background-color': '#28daf1'});
+                    if(Exp%100<=10 && Exp%100>0){
+                    $(".progress-bar").css({'width': 23});
+                    }
+                    else{
+                    $(".progress-bar").css({'width': (Exp%100)*2.3});
+                    }
+                    $(".Appoggio").css({"animation-name":"Progress"});
+                    $(".Appoggio").css({"animation-duration":"0.75s"});
+
+                }
+                
+             }
+
+    //GESTIONE RESPONSIVE DESIGN TRAMITE JQUERY
+    $(document).ready(function(){
+    Responsive();
+    var livello = "<%= usrSessRank.level%>";
+    if(livello<50){
+        $(".Cerchio2 label img").addClass("Blurra");
+
+        $(".Cerchio3 label img").addClass("Blurra");
+       
+        
+    }
+    if(livello>=50 && livello<100){
+        $(".Cerchio2 label img").removeClass("Blurra");
+        $(".Cerchio2").css({"pointer-events":"auto"});
+        $(".Cerchio2").css({"cursor":"pointer"});
+        $(".label2").css({"cursor":"pointer"});
+        $("#ach1").css({"cursor":"pointer"});
+
+        $(".Cerchio3 label img").addClass("Blurra");
+        
+    }
+    if(livello>=100){
+        $(".Cerchio2 label img").removeClass("Blurra");
+        $(".Cerchio2").css({"pointer-events":"auto"});
+        $(".Cerchio2").css({"cursor":"pointer"});
+        $(".label2").css({"cursor":"pointer"});
+        $("#ach1").css({"cursor":"pointer"});
+        $(".Cerchio3 label img").removeClass("Blurra");
+        $(".Cerchio3").css({"pointer-events":"auto"});
+        $(".Cerchio3").css({"cursor":"pointer"});
+        $(".label2").css({"cursor":"pointer"});
+        $("#ach2").css({"cursor":"pointer"});
+
+    }
+
+    });
+
+    $(window).on('resize', function () {
+    Responsive();
+    });
+
+function IsChecked(){
+    if($('#uno').is(':checked')){
+        $('.Cerchio1').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});
+        $('.Cerchio2').css({'box-shadow': 'none'});  
+        $('.Cerchio3').css({'box-shadow': 'none'});  
+    }
+    if($('#due').is(':checked')){
+        $('.Cerchio2').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});    
+        $('.Cerchio1').css({'box-shadow': 'none'}); 
+        $('.Cerchio3').css({'box-shadow': 'none'});    
+    }
+    if($('#tre').is(':checked')){
+        $('.Cerchio3').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});
+        $('.Cerchio1').css({'box-shadow': 'none'}); 
+        $('.Cerchio2').css({'box-shadow': 'none'});
+        
+    }
+
+
+
+
+}
+
+//Achievements quando la pagina carica//
+$(document).ready(function(){
+var Background = "<%= usrSess.background %>";
+            if(Background==0){
+            $('.Cerchio1').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});
+            $('.Cerchio2').css({'box-shadow': 'none'});  
+            $('.Cerchio3').css({'box-shadow': 'none'});  
+    }
+            if((Background==1)){
+            $('.Cerchio2').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});    
+            $('.Cerchio1').css({'box-shadow': 'none'}); 
+            $('.Cerchio3').css({'box-shadow': 'none'});    
+    }
+            if((Background==2)){
+            $('.Cerchio3').css({'box-shadow': '0 10px 50px rgb(88, 25, 235)'});
+            $('.Cerchio1').css({'box-shadow': 'none'}); 
+            $('.Cerchio2').css({'box-shadow': 'none'});
+        
+    }
+})
+
+function Responsive() {
+
+
+
+        if($(window).width() <= '1100'){
+        // add your scripts here
+        $(".Flex-Container").css({"flex-direction":"column"});
+        $(".Colonna").css({"justify-self":"center"});
+        $(".Colonna").css({"align-self":"center "});
+        $(".Flex-Container").append($(".Classifica"));
+        $(".Flex-Container").append($(".popup-Utente"));
+        $(".Classifica").css({"margin-top":"50px"});
+        $(".Classifica").css({"margin-bottom":"50px"});
+        $(".popup-Utente").css({"margin-bottom":"50px"});
+    }  
+    else{
+        $(".Flex-Container").css({"flex-direction":"row"});
+        $(".Colonna2").append($(".Classifica"));
+        $(".Colonna2").append($(".popup-Utente"));
+        $(".Classifica").css({"margin-top":"0px"});
+        $(".Classifica").css({"margin-bottom":"0"});
+        $(".popup-Utente").css({"margin-bottom":"0"});
+    }
+
+    if($(window).width() <= '540'){
+        $("#Bottone2").insertAfter($("#RIGA1"));
+        $("#Bottone4").insertAfter($("#RIGA2"));
+        $("#Bottone6").insertAfter($("#RIGA3"));      
+    } 
+    else{
+        $("#Bottone2").appendTo($("#RIGA1"));
+        $("#Bottone4").appendTo($("#RIGA2"));
+        $("#Bottone6").appendTo($("#RIGA3"));   
+
+    }
+
+}
+
+
+
+    </script>
+</html>

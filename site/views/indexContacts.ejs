@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexContacts.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src =""></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body>
+        <!----------------------------------- NAVBAR --------------------------------------->
+        <header>
+            <div class="inner-width">
+              <div class="nomesito">
+                <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64.png" alt=""></a>
+                <a href="/home"><div class="nome"> CoffeeGames</div></a>
+              </div>
+      
+              <i class="menu-toggle-btn fas fa-bars"></i>
+              
+              <nav class="navbar">
+                <div class="links">
+                  <a href="/home">Home</a>
+                  <% if (successLogin) { %>
+                    <a href="/account">Account</a>
+                  <% } %>
+                  <a href="/games">Giochi</a>
+                  <a href="/contacts">Contatti</a>
+                </div>
+                <% if (!successLogin) { %>
+                    <div class="buttondiv"><a href="/login" class="buttonlink">Login</a></div>
+                <% } else { %>
+                    <div class="buttondiv"><a href="/logout" class="buttonlink">Logout</a></div>
+                <% } %>
+              </nav>
+            </div>
+          </header>   
+        <!--------------------------------- FINE NAVBAR ------------------------------------->                 
+        <div class="page3">
+
+            <!------------------------------contattaci-------------------------------->
+            <div class="contact-form">
+                <span class="heading">Contattaci</span>
+                <form action="/contacts" method="post" name="contactsForm">
+                    <label for="name">Nome:</label>
+                    <input type="text" name="contactsName" value="<%= cntsName %>" placeholder="<%= cntsName %>" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="contactsEmail" value="<%= cntsEmail %>" placeholder="<%= cntsEmail %>" required>
+                    <label for="message">Messaggio:</label>
+                    <textarea id="message" name="contactsMessaggio" required></textarea>
+                    <button type="submit">Invia</button>
+                </form> 
+            </div>
+                    
+            <!------------------------------footer-------------------------------->
+            <section class="footer">
+                <div class="social">
+                    <a href="https://www.instagram.com/coffee.games2023/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/CCommander51/CoffeeGames.git"><i class="fab fa-github"></i></a>
+                </div>
+                <ul class="list">
+                    <li> <a href="#">About</a></li>
+                    <li> <a href="#">Terms</a></li>
+                    <li> <a href="#">Privacy Policy</a></li>
+                </ul>
+                <p class="copyright">Robe-con-Internet @2023</p>
+            </section>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(".menu-toggle-btn").click(function(){
+            $(this).toggleClass("fa-times");
+            $(".navbar").toggleClass("active");
+        });
+        </script>
+</html>

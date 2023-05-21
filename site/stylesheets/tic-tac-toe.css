@@ -1,0 +1,518 @@
+@font-face {
+    font-family: hero;
+    src: url(../assets/fonts/Hero.otf);
+}
+@font-face {
+    font-family: brushed;
+    src: url('../assets/fonts/FingerPaint.ttf');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: hero; 
+}
+ 
+body{
+    background-image: url(../site/assets/images/trisbackground.jpg);
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+ 
+
+ /*-----------------------------------------------NAVBAR---------------------------------------------*/
+ header{
+    height: 0px;
+    margin-top: 5px;
+  }
+  
+  .inner-width{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  
+  .navbar{
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+  }
+  
+  .links {
+    display: flex;
+    gap:20px;
+  }
+  
+  .nomesito {
+    margin-left: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo{
+    transform: scale(0.8);
+  }
+  
+  .nome {
+    color:  #ffffff;
+    font-size: 50px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .nome:hover {
+    color: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    z-index: 1;
+  }
+  
+  .navbar a{
+    margin-left: 10px;
+    font-size: 25px;
+    transition: .3s linear;
+    text-align: center;
+  }
+  
+  .navbar a:hover {
+    color: rgb(0, 166, 207);
+  }
+
+   .buttondiv .buttonlink:hover{
+    color: #fff;
+}
+  
+  .navbar i{
+    margin-right: 8px;
+    font-size: 16px;
+  }
+  
+  .menu-toggle-btn{
+    margin-right: 30px;
+    height: 90px;
+    line-height: 90px !important;
+    color: #fff;
+    font-size: 26px;
+    display: none !important;
+    cursor: pointer;
+  }
+
+
+/*---------------------------------------------FINE NAVBAR-----------------------------------------------*/
+
+/*-----------------------------------CARD UTENTI-------------------------------*/
+.PaginaTotale
+{
+    display: flex; 
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+
+.flexcontainer{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.carduser1{
+    max-width: 320px;
+    border-radius: 1rem;
+    background-color: rgba(31, 41, 55, 1);
+    padding: 1rem;
+  }
+
+  .Ombra{
+    box-shadow:0 0 25px #a10ff6; 
+  }
+  
+  .infos {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    grid-gap: 1rem;
+    gap: 1.3rem;
+  }
+  
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+    background-color: rgb(118, 36, 194);
+    background: linear-gradient(to bottom right, rgb(63, 78, 218), rgb(185, 128, 240));
+  }
+
+  .image img {
+    transform: scale(0.7);
+  }
+
+  .info {
+    height: 7rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .nomeutente {
+    font-size: 25px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+  }
+  
+  .turno {
+    font-size: 20px;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+  }
+
+  .livello {
+    font-size: 20px;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+  }
+/*----------------------------FINE CARD UTENTI-------------------------------*/
+
+
+/*GRIGIA DI GIOCO*/
+h1 {
+    font-family: brushed;
+    font-size: 90px;
+    text-transform: uppercase; /*carattere maiuscolo*/
+    color: rgb(215, 186, 241);
+    text-shadow:
+      0 0 7px rgb(166, 61, 236),
+      0 0 10px rgb(166, 61, 236),
+      0 0 21px rgb(166, 61, 236),
+      0 0 42px rgb(166, 61, 236),
+      0 0 82px rgb(171, 148, 233),
+      0 0 92px rgb(171, 148, 233),
+      0 0 102px rgb(171, 148, 233),
+      0 0 151px rgb(171, 148, 233);
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-height: 100vh;
+  display: flex; 
+  justify-self: center;
+  align-self:center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#gameboard {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap; /*forza le box a stare su piu righe, basandosi sulla width sopra assegnata*/
+    margin-top: 30px;
+    box-shadow: -1px 0px 32px 0px #224fa1;
+}
+
+.box {
+    cursor: pointer;
+    font-family: hero;
+    height: 100px;
+    width: 100px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 110px;
+    border-right: 7px solid;
+    border-bottom: 7px solid;
+    color: rgb(215, 186, 241);
+    text-shadow:
+      0 0 7px rgb(187, 135, 236),
+      0 0 10px rgb(187, 135, 236),
+      0 0 21px rgb(187, 135, 236),
+      0 0 42px rgb(146, 52, 235),
+      0 0 82px rgb(146, 52, 235),
+      0 0 92px rgb(146, 52, 235),
+      0 0 102px rgb(146, 52, 235),
+      0 0 151px rgb(146, 52, 235);
+}
+
+.box:nth-child(3n) {
+    border-right: none; /*rimuove il bordo a destra delle terze caselle*/
+  }
+.box:nth-child(6) ~ .box {
+    border-bottom: none; /*rimuove il bordo in basso della sesta casella in poi*/
+} 
+
+.container button{
+  margin-top:30px;
+  padding: 10px 15px;
+  /*background: lightblue;*/
+  background:#6491e4;
+  color: #333;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 1 );
+}
+
+
+/*------------------------POPUP--------------------------------*/
+.popup {
+    width: 400px;
+    height: 300px;
+    background: #a76acc;
+    border-style: solid;
+    border-color: rgba(31, 41, 55, 1);
+    border-radius: 10px;
+    position: absolute;
+    top:0%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1); /*centro della pagina*/
+    text-align: center;
+    padding: 30px 0px 30px;
+    color: #333;
+    visibility:hidden;
+    transition: transform 0.4s, top 0.4s;
+    
+}
+
+.popup .bottoni {
+    display: grid;
+    padding:10px 30px;
+}
+
+.popup img{
+    width: 50px;
+    margin-top: 15px;
+    border-radius: 10%;
+    scale: 1.3;
+}
+
+.popup h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin:0px 0px 0px;
+}
+
+.popup button{
+  margin-top:10px;
+  padding: 5px 10px;
+  /*background: lightblue;*/
+  background:#f0ebd8;
+  color: #333;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 1 );
+}
+
+button:hover { 
+    transform: scale(1.03); 
+}
+
+.popup .buttonlink{
+  margin-top:10px;
+  padding: 5px 10px;
+  /*background: lightblue;*/
+  background:#f0ebd8;
+  color: #333;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 1 );
+}
+
+.buttonlink:hover { 
+    transform: scale(1.03); 
+}
+
+.open-popup {
+    visibility:visible;
+    top:50%;
+    transform: translate(-50%,-50%) scale(1);  
+}
+
+#Vincitore{
+    color: rgba(31, 41, 55, 1);
+}
+
+.Blurra{
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    pointer-events: none;
+}
+/*--------------------------FINE POPUP--------------------------------*/
+
+
+/*---------------------------------------RESPONSIVE DESIGN---------------------------------------*/
+/*navbar*/
+  @media (max-width:1200px) {
+
+    .nomesito{
+        margin-left: 30px;
+    }
+
+    .menu-toggle-btn{
+      display: block !important;
+      z-index: 100;
+    }
+  
+    .links {
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .navbar {
+      position: absolute;
+      max-width: 400px;
+      top: 80px;
+      right: 0;
+      display: none;
+      padding: 20px 40px;
+      z-index:100; 
+      background-color: #623de7b2;
+      border-radius: 10px;
+      overflow: hidden; 
+    }
+  
+    .navbar a{
+      display: block;
+      margin: 15px 0px;
+      float: center;
+    }
+  
+    .navbar.active{
+      display: block;
+    }
+
+
+  }
+
+  @media (max-width:510px) {
+    .nome {
+        font-size: 45px;
+    }  
+
+    .navbar{
+        min-width: 100%;
+        margin-right: 0px;
+      }
+  }
+
+  @media (max-width:460px) {    
+      .nomesito .logo {
+        transform: scale(0.7);
+      }
+
+      .nome {
+        font-size: 40px;
+      }
+  }
+
+  @media (max-width:430px) {    
+    .nome {
+      font-size: 35px;
+    }
+
+    .nomesito {
+        margin-left: 20px;
+    }
+}
+
+  @media (max-width:400px) {
+    .nomesito  {
+        margin-left: 10px;
+      }
+
+    .nome {
+        margin-right: 15px;
+      }
+  }
+
+  @media (max-width:380px) {
+    .nome {
+        font-size: 30px;
+      }
+  }
+
+  @media (max-width:340px) {
+    .nomesito .logo {
+        display: none;
+      }
+
+      .nome {
+        margin-left: 10px;
+        font-size: 33px;
+      }
+  }
+
+/*popup*/
+@media (max-width:480px) {
+    .popup {
+        width: 380px;
+    }
+} 
+
+@media (max-width:450px) {
+    .popup {
+        width: 360px;
+    }
+} 
+
+@media (max-width:430px) {
+    .popup {
+        width: 330px;
+    }
+} 
+
+@media (max-width:380px) {
+    .popup {
+        width: 300px;
+    }
+} 
+
+
+/*gameboard e card*/
+@media (max-width:1000px) {
+  .carduser1 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width:740px) {
+  .PaginaTotale {
+    align-items: center;
+  }
+
+  .container {
+    margin-top: 90px;
+    margin-bottom: 20px;
+    min-height: 60vh;
+    display: flex; 
+  }
+}
+
+
+
+
+

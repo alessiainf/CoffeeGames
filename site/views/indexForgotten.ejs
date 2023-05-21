@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="it">
+    <head>
+
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexForgotten.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src =""></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body>
+
+        <a class="navbar" href="/home">
+            <div class="logo">
+                <img class="img" src="../assets/icons/coffeeCup64.png">
+            </div>
+            <div class="nome">CoffeeGames</div>
+        </a>
+        
+        <section>
+            <div class="wrapper">
+                <div class="center">
+                    <h2>Recupera Password</h2>
+
+                    <% if (loginError) { %>
+                        <div class="Scritta">User not exist!!</div>
+                    <% } %>
+
+                    <% if (chekCodeError) { %>
+                        <div class="Scritta">Error response check</div>
+                    <% } %>
+
+                    <form action="/forget" method="post" name="forgetForm">
+                        <div class="Text_Field">
+                            <div class = "Scritta">Inserire Email</div>
+                            <input type="email" name ="forgetEmail" size ="30" placeholder="" required>  
+                        </div>
+                        <div class="Text_Field">
+                            <div class = "Scritta">Inserire nuova Password</div>
+                            <input type="password" name="forgetNewPassword" size ="30" placeholder="" required>  
+                        </div>
+                        <div class="Text_Field">
+                            <div class = "Scritta"><%= resetQuestion %></div>
+                            <input type="text" name="forgetQuestResponse" size ="30" placeholder="" required>  
+                        </div>
+                        <div>
+                            <span>
+                                <div class = "ContainerButton">
+                                    <div class ="Bottone" id="Bottone2">
+                                        <a type="button" class="Log_in" href="/login">Indietro</a>
+                                    </div>
+                                    <div class ="Bottone" id="Bottone1">
+                                        <button type="submit" class="Log_in">Reset</button>
+                                    </div> 
+                                </div>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

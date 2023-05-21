@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+ 
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+ 
+        <meta charset="UTF-8"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href=""/>
+        
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="..\stylesheets\indexHome.css">
+
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src=""></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src ="..\javascript\indexHome.js"></script>
+
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+
+        <!------------------------------------------------------------------------->
+
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+
+    </head>
+    <body>
+        <!------------------------ WRAPPER PER EFFETTO PARALLEX SCOLL ------------------------>
+        
+        <div class = "Container-Blurred" id = "ConBlurred">
+
+            <!----------------------------------- NAVBAR --------------------------------------->
+            <header>
+                <div class="inner-width">
+                  <div class="nomesito">
+                    <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64.png" alt=""></a>
+                    <a href="/home"><div class="nome"> CoffeeGames</div></a>
+                  </div>
+          
+                  <i class="menu-toggle-btn fas fa-bars"></i>
+                  
+                  <nav class="navbar">
+                    <div class="links">
+                      <a href="/home">Home</a>
+                      <% if (successLogin) { %>
+                        <a href="/account">Account</a>
+                      <% } %>
+                      <a href="/games">Giochi</a>
+                      <a href="/contacts">Contatti</a>
+                    </div> 
+                    <% if (!successLogin) { %>
+                        <div class="buttondiv"><a href="/login" class="buttonlink">Login</a></div>
+                    <% } else { %>
+                        <div class="buttondiv"><a href="/logout" class="buttonlink">Logout</a></div>
+                    <% } %>
+                  </nav>
+                </div>
+              </header>   
+            <!--------------------------------- FINE NAVBAR ------------------------------------->
+
+
+            <!--------------------------- SECTION DELLA PRIMA PAGINA --------------------------------->
+            <section>
+                <div class="main1">
+                    <div class="logo"><img class="img" src="../assets/icons/coffeeCup256.png"></div>
+                    <h1 class="descrizione">Prenditi una pausa con i tuoi amici<br>...e bevi un caffè</h1>
+                    <!--<a class="bottone" href="/games">Inizia</a>-->
+                    <a class="bottone" href="/games">  
+                        <span></span>
+                        <span></span> <!-- per effetto bottone-->
+                        <span></span>
+                        <span></span> Inizia
+                    </a>
+                </div>
+            </section>
+            <!-------------------------- FINE SECTION DELLA PRIMA PAGINA -------------------------------->
+
+
+            <!------------------------ SECONDA PAGINA (dove andranno le card con i giochi) ------------------------>
+            <div class="page2" id="games">      
+                <div class="container">
+                    <input type="radio" name="dot" id="one" checked>
+                    <input type="radio" name="dot" id="two">
+                    <!--box con le card-->
+                    <div class="main-card">
+                
+                    <!--contenitore di 3 card-->
+                    <div class="cards">
+                        
+                        <!--gioco 1-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/tic-tac-toe.png" alt="">  </div>
+                                <div class="nomegioco">Tris</div>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" onclick="openPopuptris();">Gioca</div>
+                                    <div class="classifica" onclick=" openClassificaTris();">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!--gioco 2-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/bombastic.png" alt="">  </div>
+                
+                                <div class="nomegioco">Campo minato</div>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" onclick="openPopupcampominato();">Gioca</div>
+                                    <div class="classifica" onclick="openClassificaCampoMinato();">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!--gioco 3-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/connect4-512.png" alt="">  </div>
+                                <div class="nomegioco">Forza quattro</div>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" onclick="openPopupforza4();">Gioca</div>
+                                    <div class="classifica" onclick="openClassificaForza4();">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+                    <!--contenitore di 3 card-->
+                    <div class="cards">
+                        
+                        <!--gioco 1-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/memory-game.png" alt="">  </div>
+                                <div class="nomegioco">Memory</div>
+                                <h2 style="color: #333;">Non disponibile</h2>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" style="background-color: #686868;">Gioca</div>
+                                    <div class="classifica" style="background-color: #686868;">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!--gioco 2-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/Wordle.png" alt="">  </div>
+                                <div class="nomegioco">Wordle</div>
+                                <h2 style="color: #333;">Non disponibile</h2>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" style="background-color: #686868;">Gioca</div>
+                                    <div class="classifica" style="background-color: #686868;">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!--gioco 3-->
+                        <div class="card">
+                            <div class="content">
+                                <div class="cimg"> <img src="../assets/images/battleship.png" alt="">  </div>
+                                <div class="nomegioco" style="font-size: 38px;">Battaglia Navale</div>
+                                <h2 style="color: #333;">Non disponibile</h2>
+                                <div class="containerbottonicard">
+                                    <div class="gioca" style="background-color: #686868;">Gioca</div>
+                                    <div class="classifica" style="background-color: #686868;">Classifica</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                
+                    <div class="slider">
+                        <label for="one" class=" active one"></label>
+                        <label for="two" class="two"></label>
+                    </div>
+                </div>
+
+
+            </div>
+            <!------------------------ FINE SECONDA PAGINA ------------------------> 
+        
+            <!----------------------------FOOTER--------------------------------->
+            
+             <!------------------------FINE FOOTER--------------------------------->
+        </div> <!--tag di blur--> 
+         
+            <!------------------------------------POPUP----------------------------------->
+            <div class="containerpopup">
+
+                    <div class="popup" id="popuptris">
+                        <h1>Regole del gioco:</h1>
+                        <h3>Si gioca su una griglia di 3X3 caselle 
+                            (9 caselle totali).<br> Il giocatore di turno occupa una delle caselle con il suo simbolo, 
+                            poi cede la mossa all’avversario. Vince il primo giocatore che riesce ad ottenere 
+                            un “tris”, ovvero tre simboli adiacenti in riga, in colonna o lungo una delle 
+                            diagonali.</h3>
+                        <h1>Scegli la modalità di gioco: </h1>
+                        <div class="scelta">
+                            <a type="button" class="buttonlink" onclick="" href="" style="background-color: #686868;">Multigiocatore</a>
+                            <a type="button" class="buttonlink" onclick="" href="/tic-tac-toe">Giocatore singolo</a>
+                            <a type="button" class="buttonlink" onclick="closePopuptris();">Torna indietro</a>
+                        </div>
+                    </div> 
+
+                    <div class="popup" id="popupcampominato">
+                        <h1>Regole del gioco:</h1>
+                        <h3>Clicca su 
+                            tutte le caselle libere nella tabella, fino a lasciare per ultime soltanto le 
+                            caselle che nascondono una bomba. <br>Se clicchi su una casella con la bomba, 
+                            il gioco finisce e ricomincia da capo.</h3>
+                        <h1>Scegli la modalità di gioco: </h1>
+                        <div class="scelta">
+                            <div class="sceltadifficolta1">
+                                <a type="button" class="buttonlink" onclick="" href="/minesweeper/easy">Easy</a>
+                                <a type="button" class="buttonlink" onclick="" href="/minesweeper/normal">Normal</a>
+                            </div>
+                            <div class="sceltadifficolta2">
+                                <a type="button" class="buttonlink" onclick="" href="/minesweeper/hard">Hard</a>
+                                <a type="button" class="buttonlink" onclick="" href="/minesweeper/rr">Roulette</a>
+                            </div>
+                            <a type="button" class="buttonlink" onclick="closePopupcampominato();">Torna indietro</a>
+                            
+                        </div>
+                    </div>
+
+                    <div class="popup" id="popupforza4">
+                        <h1>Regole del gioco:</h1>
+                        <h3>I giocatori a turno dispongono i gettoni nella griglia, che seguono la
+                            forza di gravita. <br>
+                            Vince il giocatore che riesce a disporre per primo quattro delle proprie pedine in linea 
+                            retta orizzontale, verticale o diagonale.</h3>
+                        <h1>Scegli la modalità di gioco: </h1>
+                        <div class="scelta">
+                            <a type="button" class="buttonlink" onclick="" href="" style="background-color: #686868;">Multigiocatore</a>
+                            <a type="button" class="buttonlink" onclick="" href="/connect-4">Giocatore singolo</a>
+                            <a type="button" class="buttonlink" onclick="closePopupforza4();">Torna indietro</a>
+                            
+                        </div>
+                    </div>
+
+                    <div class="popup" id="popupmemory">
+                        <h1>Regole del gioco:</h1>
+                        <h3>Un giocatore scopre due tessere e se sono uguali 
+                            gioca di nuovo, sennò passa al giocatore successivo. <br>
+                            Si gioca fino a quando tutte le coppie sono state scoperte.</h3>
+                        <h1>Scegli la modalità di gioco: </h1>
+                        <div class="scelta">
+                            <a type="button" class="buttonlink" onclick="" href="" style="background-color: #686868;">Multigiocatore</a>
+                            <a type="button" class="buttonlink" onclick="" href="/memory">Giocatore singolo</a>
+                            <a type="button" class="buttonlink" onclick="closePopupmemory();">Torna indietro</a>
+                        </div>
+                    </div>
+
+                    <!--Qui andranno altri eventuali popup-->
+
+
+            <!-- INIZIO DELLE VARIE CLASSIFICHE-->
+
+
+            <div class = "popup" id = "PopupClassifica">                                      
+                <div class = "Classifica">                                            
+                    <div class="card2">
+                        <H1 id = "Scritta"></H1>
+                        <div class = "Riga2">
+                            <div class = "Posizione" id="P">Posizione</div>
+                            <div class = "Username">Username</div>
+                            <div class = "Vittorie">Vittorie</div>
+                        </div>
+                        <div class = "Riga">
+                            <div class = "Posizione" id="P1"> 1°</div>
+                            <div class = "Username" id="U">
+                            <div class = "NomeUser" id="NU1"></div>
+                            </div>
+                            <div class = "Vittorie" id="VU1"></div>
+                        </div>
+                        <div class = "Riga">
+                            <div class = "Posizione" id="P2">2°</div>
+                            <div class = "Username" id="U">
+                                <div class="NomeUser" id="NU2"></div>
+                            </div>
+                            <div class = "Vittorie" id="VU2"></div>
+                        </div>
+                        <div class = "Riga">
+                            <div class = "Posizione" id="P3">3°</div>
+                            <div class = "Username" id="U">
+                                <div class = "NomeUser" id="NU3"></div>
+                            </div>
+                            <div class = "Vittorie" id="VU3"></div>
+                        </div>
+                        <div class = "Riga">
+                            <div class = "Posizione" id="P4">4°</div>
+                            <div class = "Username" id="U">
+                                <div class = "NomeUser" id="NU4"></div>
+                            </div>
+                            <div class = "Vittorie" id="VU4"></div>
+                        </div>
+                        <div class = "Riga">
+                            <div class = "Posizione" id="P4">5°</div>
+                        <div class = "Username" id="U">
+                            <div class = "NomeUser" id="NU5"></div>
+                        </div>
+                            <div class = "Vittorie" id="VU5"></div>
+                        </div>
+                        <div class="ContainerButtoni">
+                            <a type="button" class="buttonlink" id="btnClassifica" onclick="closePopupclassifica();">Torna indietro</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------FINE POPUP----------------------------------->
+        
+
+
+
+
+
+
+        </div>
+    
+        <!------------------------ FINE WRAPPER PER EFFETTO PARALLEX SCOLL ------------------------>
+
+        <!-- toggle menu jquery-->
+        <script type="text/javascript">
+            $(".menu-toggle-btn").click(function(){
+              $(this).toggleClass("fa-times");
+              $(".navbar").toggleClass("active");
+            });
+        </script> 
+
+        <script>
+            //gestione apertura e chiusura del popup
+            let Blurred = document.getElementById("ConBlurred");
+            
+
+            let popuptris=document.getElementById("popuptris");
+                function openPopuptris() {
+                    popuptris.classList.add("open-popup");
+                    Blurred.classList.add("Blurra"); 
+                }
+                function closePopuptris() {
+                    popuptris.classList.remove("open-popup");
+                    Blurred.classList.remove("Blurra");
+                }
+
+            let popupcm=document.getElementById("popupcampominato");
+                function openPopupcampominato() {
+                    popupcm.classList.add("open-popup");
+                    Blurred.classList.add("Blurra"); 
+                }
+                function closePopupcampominato() {
+                    popupcm.classList.remove("open-popup");
+                    Blurred.classList.remove("Blurra");
+                }
+
+            let popupforza4=document.getElementById("popupforza4");
+                function openPopupforza4() {
+                    popupforza4.classList.add("open-popup");
+                    Blurred.classList.add("Blurra"); 
+                }
+                function closePopupforza4() {
+                    popupforza4.classList.remove("open-popup");
+                    Blurred.classList.remove("Blurra");
+                }
+
+            let popupmemory=document.getElementById("popupmemory");
+            let popupclassifica = document.getElementById("PopupClassifica");
+            let Titolo = document.getElementById("Scritta");
+                function openPopupmemory() {
+                    popupmemory.classList.add("open-popup");
+                    
+                    Blurred.classList.add("Blurra"); 
+
+                }
+                function closePopupmemory() {
+                    popupmemory.classList.remove("open-popup");
+                    Blurred.classList.remove("Blurra");
+                }
+
+                function openClassificaTris(){
+                    popupclassifica.classList.add("open-popup");
+                    Blurred.classList.add("Blurra");
+                    Titolo.innerHTML="CLASSIFICA TRIS";
+
+                    if("<%= usr5RanksTTT[0].username %>" != "not.defined") {
+                        document.getElementById("NU1").innerHTML = "<%= usr5RanksTTT[0].username %>";
+                        document.getElementById("VU1").innerHTML = "<%= usr5RanksTTT[0].wins %>";
+                    } else{
+                        document.getElementById("NU1").innerHTML = "-";
+                        document.getElementById("VU1").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksTTT[1].username %>" != "not.defined") {
+                        document.getElementById("NU2").innerHTML = "<%= usr5RanksTTT[1].username %>";
+                        document.getElementById("VU2").innerHTML = "<%= usr5RanksTTT[1].wins %>";
+                    } else{
+                        document.getElementById("NU2").innerHTML = "-";
+                        document.getElementById("VU2").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksTTT[2].username %>" != "not.defined") {
+                        document.getElementById("NU3").innerHTML = "<%= usr5RanksTTT[2].username %>";
+                        document.getElementById("VU3").innerHTML = "<%= usr5RanksTTT[2].wins %>";
+                    } else{
+                        document.getElementById("NU3").innerHTML = "-";
+                        document.getElementById("VU3").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksTTT[3].username %>" != "not.defined") {
+                        document.getElementById("NU4").innerHTML = "<%= usr5RanksTTT[3].username %>";
+                        document.getElementById("VU4").innerHTML = "<%= usr5RanksTTT[3].wins %>";
+                    } else{
+                        document.getElementById("NU4").innerHTML = "-";
+                        document.getElementById("VU4").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksTTT[4].username %>" != "not.defined") {
+                        document.getElementById("NU5").innerHTML = "<%= usr5RanksTTT[4].username %>";
+                        document.getElementById("VU5").innerHTML = "<%= usr5RanksTTT[4].wins %>";
+                    } else{
+                        document.getElementById("NU5").innerHTML = "-";
+                        document.getElementById("VU5").innerHTML = "-";
+                    }
+                }
+                function openClassificaCampoMinato(){
+                    popupclassifica.classList.add("open-popup");
+                    Blurred.classList.add("Blurra");
+                    Titolo.innerHTML="CLASSIFICA CAMPO MINATO";
+                    
+                    if("<%= usr5RanksMS[0].username %>" != "not.defined") {
+                        document.getElementById("NU1").innerHTML = "<%= usr5RanksMS[0].username %>";
+                        document.getElementById("VU1").innerHTML = "<%= usr5RanksMS[0].wins %>";
+                    } else{
+                        document.getElementById("NU1").innerHTML = "-";
+                        document.getElementById("VU1").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksMS[1].username %>" != "not.defined") {
+                        document.getElementById("NU2").innerHTML = "<%= usr5RanksMS[1].username %>";
+                        document.getElementById("VU2").innerHTML = "<%= usr5RanksMS[1].wins %>";
+                    } else{
+                        document.getElementById("NU2").innerHTML = "-";
+                        document.getElementById("VU2").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksMS[2].username %>" != "not.defined") {
+                        document.getElementById("NU3").innerHTML = "<%= usr5RanksMS[2].username %>";
+                        document.getElementById("VU3").innerHTML = "<%= usr5RanksMS[2].wins %>";
+                    } else{
+                        document.getElementById("NU3").innerHTML = "-";
+                        document.getElementById("VU3").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksMS[3].username %>" != "not.defined") {
+                        document.getElementById("NU4").innerHTML = "<%= usr5RanksMS[3].username %>";
+                        document.getElementById("VU4").innerHTML = "<%= usr5RanksMS[3].wins %>";
+                    } else{
+                        document.getElementById("NU4").innerHTML = "-";
+                        document.getElementById("VU4").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksMS[4].username %>" != "not.defined") {
+                        document.getElementById("NU5").innerHTML = "<%= usr5RanksMS[4].username %>";
+                        document.getElementById("VU5").innerHTML = "<%= usr5RanksMS[4].wins %>";
+                    } else{
+                        document.getElementById("NU5").innerHTML = "-";
+                        document.getElementById("VU5").innerHTML = "-";
+                    }
+                }
+
+                function openClassificaForza4(){
+                    popupclassifica.classList.add("open-popup");
+                    Blurred.classList.add("Blurra");
+                    Titolo.innerHTML="CLASSIFICA FORZA QUATTRO";
+
+                    if("<%= usr5RanksC4[0].username %>" != "not.defined") {
+                        document.getElementById("NU1").innerHTML = "<%= usr5RanksC4[0].username %>";
+                        document.getElementById("VU1").innerHTML = "<%= usr5RanksC4[0].wins %>";
+                    } else{
+                        document.getElementById("NU1").innerHTML = "-";
+                        document.getElementById("VU1").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksC4[1].username %>" != "not.defined") {
+                        document.getElementById("NU2").innerHTML = "<%= usr5RanksC4[1].username %>";
+                        document.getElementById("VU2").innerHTML = "<%= usr5RanksC4[1].wins %>";
+                    } else{
+                        document.getElementById("NU2").innerHTML = "-";
+                        document.getElementById("VU2").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksC4[2].username %>" != "not.defined") {
+                        document.getElementById("NU3").innerHTML = "<%= usr5RanksC4[2].username %>";
+                        document.getElementById("VU3").innerHTML = "<%= usr5RanksC4[2].wins %>";
+                    } else{
+                        document.getElementById("NU3").innerHTML = "-";
+                        document.getElementById("VU3").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksC4[3].username %>" != "not.defined") {
+                        document.getElementById("NU4").innerHTML = "<%= usr5RanksC4[3].username %>";
+                        document.getElementById("VU4").innerHTML = "<%= usr5RanksC4[3].wins %>";
+                    } else{
+                        document.getElementById("NU4").innerHTML = "-";
+                        document.getElementById("VU4").innerHTML = "-";
+                    }
+                    if("<%= usr5RanksC4[4].username %>" != "not.defined") {
+                        document.getElementById("NU5").innerHTML = "<%= usr5RanksC4[4].username %>";
+                        document.getElementById("VU5").innerHTML = "<%= usr5RanksC4[4].wins %>";
+                    } else{
+                        document.getElementById("NU5").innerHTML = "-";
+                        document.getElementById("VU5").innerHTML = "-";
+                    }
+                }
+                function closePopupclassifica(){
+                    popupclassifica.classList.remove("open-popup");
+                    Blurred.classList.remove("Blurra");
+
+                }
+                
+                
+        </script>
+    </body>
+</html>

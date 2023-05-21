@@ -1,0 +1,355 @@
+@font-face {
+    font-family: hero;
+    src: url('../assets/fonts/Hero.otf');
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: hero;
+    scroll-behavior: smooth; 
+}
+
+body 
+{
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:url('../assets/images/loginBg.jpg');
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat;  
+    height: 100%;
+    width: 100%;
+}
+
+/*---------------------------------------NAVBAR-----------------------------------*/
+.navbar{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+    gap:10px; 
+}
+
+.navbar .nome{
+    color:  #ffffff;
+    font-size: 50px;
+    font-weight: 700;
+    z-index: 1; /*per il pointer*/
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.navbar .logo {
+    z-index: 1; /*per il pointer*/
+    cursor: pointer;
+}
+/*-------------------------------------FINE NAVBAR-----------------------------------*/
+
+
+/*---------------------------------------SECTION-----------------------------------*/
+section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+.wrapper 
+{
+    position:relative;
+    width: 425px;
+    height:395px;
+    margin-top: 90px;
+    background: transparent;
+    border: 2px solid rgb(214, 163, 214);
+    border-radius:20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0,0, .5);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.wrapper .center
+{
+    width:100%;
+    padding: 40px;
+}
+
+.center h2
+{
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+.Scritta{
+    padding-left:3.5%;
+    padding-bottom:0.5%;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+::placeholder {
+    font-size: 20px;
+    color: rgb(201, 201, 201);
+    padding: 5px;
+  }
+
+
+
+  .Text_Field
+  {
+      padding-top: 20px;
+      position: relative;
+      width:100%;
+      height: 5%;
+      
+      
+  
+  }
+  
+  .Text_Field input
+  {
+      padding-top: 1.5%;
+      padding-bottom: 1.5%;
+      padding-left: 2.5%;
+      width:100%;
+      height: 100%;
+      top:100%;
+      background: transparent;
+      outline:none;
+      color: #ffffff;
+      font-size: 20px;
+      border: 2px solid rgb(249, 195, 246);
+      border-radius: 20px;
+  
+  }
+
+a {
+    text-decoration: none;
+    color: #B48FD9;
+    font-family: hero;
+    font-size: 16px;
+}
+
+a:hover {
+    color: #7584d4;
+}
+
+.Text_Link1 
+{
+    padding-top: 5%;
+}
+
+.Ricordami
+{
+    display: flex;
+    padding-top: 10px;
+    gap: 5px;
+    font-size: 16px;
+    color: #d3d3d3;
+}
+
+.ContainerButton
+{   
+        position:relative;
+        display: flex;
+        flex-direction: row;
+        padding-top: 5%; 
+        justify-content: center;   
+}
+
+.Bottone#Bottone1 {
+    display: flex;
+    flex-direction: row;
+    padding-left:15px;
+    
+}
+
+.Bottone#Bottone2 {
+    display: flex;
+    flex-direction: row;
+    padding-right:15px;
+    
+}
+
+.Bottone:hover{
+    transform: scale(1.03);
+}
+
+.Log_in
+{
+    font-size: 25px;
+    font-weight: 600;
+    background-color:rgb(0, 166, 207);
+    text-align: center;
+    color: #ffffff;
+    padding: 6px 30px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.Log_in:hover{
+    color:white;
+}
+
+.Text_Link2 
+{
+    text-align: center;
+    transform: translateY(15px);
+    color: #B48FD9;
+    font-size:0.95em;
+}
+
+
+/*---------------------------------------FINE SECTION-----------------------------------*/
+
+/*-------------------------------------RESPONSIVE DESIGN---------------------------------*/
+
+@media (max-width: 530px) {
+
+
+    .wrapper{
+      width:350px; /*40%*/
+      height:30%;
+      
+    }
+    .wrapper .center{
+        padding-left:35px;
+        padding-right:35px;
+        padding-top:15px;
+        padding-bottom:10px;
+        
+    }
+
+    .center h2{
+        font-size: 25px;
+    }
+    .Text_Field{
+        width:100%;
+    }
+    .Scritta{
+        
+        font-size:15px;
+    }
+
+    .Log_in{
+        padding: 3px 18px;
+    }
+    
+
+
+}
+
+
+@media (max-width: 425px) {
+    
+    .wrapper{
+        width:270px; /*60%*/
+        height:15%;
+      }
+      body{
+        min-height:50vh;
+      }
+      .wrapper .center{
+          padding-left:25px;
+          padding-right:25px;
+          padding-top:15px;
+          padding-bottom:10px;
+          
+      }
+  
+      .center h2{
+          font-size: 22px;
+      }
+      .Text_Field{
+          width:100%;
+      }
+      .Scritta{
+          
+          font-size:15px;
+      }
+  
+      .Log_in{
+        font-size:20px;
+          padding: 2px 11px;
+      }
+      
+  
+  
+  }
+
+  @media (max-width: 320px) {
+    
+    .wrapper{
+        width:210px; /*60%*/
+        height:5%;
+      }
+      body{
+        min-height:20vh;
+      }
+      .wrapper .center{
+          padding-left:20px;
+          padding-right:20px;
+          padding-top:15px;
+          padding-bottom:10px;
+          
+      }
+  
+      .center h2{
+          font-size: 15px;
+      }
+      .Text_Field{
+          width:100%;
+      }
+      .Scritta{
+          
+          font-size:10px;
+      }
+  
+      .Log_in{
+        font-size:16px;
+          padding: 1.25px 6px;
+      } 
+  }
+
+  
+
+/*navbar*/
+@media (max-width:480px) {  
+    .navbar .nome{
+        font-size: 45px;
+    }
+}
+
+@media (max-width:430px) {
+    .navbar .nome{
+        font-size: 40px;
+    }
+}
+
+@media (max-width:380px) {
+    .navbar .nome{
+        font-size: 35px;
+    }
+}
+
+@media (max-width:340px) {
+    .navbar .nome{
+        font-size: 30px;
+    }
+}

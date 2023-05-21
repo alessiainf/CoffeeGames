@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="kewords" content="HTML, meta-informazione">
+        <meta name="author" content="Robe-con-Internet">
+        <meta name="generator" content="VSCode">
+  
+        <meta charset="UTF-8"/>
+  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+        <!-- Base Bootstrap CSS -->
+        <link rel="stylesheet" type="text/css" href="..\..\node_modules\bootstrap\dist\css\bootstrap.css"/>
+
+        <!-- ATTENZIONE, BISOGNA RIVEDERE LE DIPENDENZE CON BOOTSTRAP DELLA RIGA N.16 CON QUELLE DI RIGA N.13 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+        <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+        <link rel="stylesheet" href="../stylesheets/connect-4.css">
+  
+        <!-- Complete Bootstrap JS -->
+        <script type="application/javascript" src="..\..\node_modules\bootstrap\dist\js\bootstrap.bundle.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+        <!-- Custom JS -->
+        <script type="application/javascript" src ="../javascript/connect-4.js"></script>
+  
+        <!------------------------------------------------------------------------->
+
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" 
+        />
+        <!------------------------------------------------------------------------->
+  
+        <!-- Window bar of page -->
+        <title>Progetto LTW</title>
+        <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+    </head>
+
+    <body onload="return ciao();">
+         
+        
+
+     <div class="containerFull" id="FullContainer">
+
+<!----------------------------------NAVBAR---------------------------------------------------------------->
+<header>
+    <div class="inner-width">
+      <div class="nomesito">
+        <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64.png" alt=""></a>
+        <a href="/home"><div class="nome"> CoffeeGames</div></a>
+      </div>
+
+      <i class="menu-toggle-btn fas fa-bars"></i>
+      
+      <nav class="navbar">
+        <div class="links">
+          <a href="/home">Home</a>
+         <% if (successLogin) { %>
+            <a href="/account">Account</a>
+          <% } %>
+          <a href="/games">Giochi</a>
+          <a href="/contacts">Contatti</a>
+        </div>
+      </nav>
+    </div>
+  </header>  
+<!-------------------------------------------------------------------------------------->
+
+    
+
+    
+    
+        <h1 id="Result"></h1>
+
+        
+<div class="flexcontainer">
+    <div class = "Container-Card">
+        <div class="carduser1" id = "CU1">
+            <div class="infos">
+                <% if (successLogin) { %>
+                    <div class="image"><img src="..\assets\userIcons\<%= user.icon %>.png"> </div>
+                    <div class="info">
+                            <p class="nomeutente"><%= user.username %></p>
+                            <p class="turno"> Giochi con i Viola </p>
+                            <p class="livello">Lv. <%= userRank.level %></p>
+                    </div>
+                    <% } else { %>
+                        <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                        <div class="info">
+                                <p class="nomeutente">Guest 1</p>
+                                <p class="turno"> Giochi con i Viola </p>
+                                <p class="livello"> Lv. 0</p>
+                        </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class = "PaginaTotale"> 
+    
+    <div class = "Pagina">
+        <h5> FORZA </h5> <h6> QUATTRO </h6>
+    </div>
+  
+    
+    <div class = "Board" id = "Griglia">
+        <!-- Riga 1-->
+            <div></div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+            <div> </div>
+        <!-- Riga 2-->
+            <div> </div>
+            <div></div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+        <!-- Riga 3-->
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+        <!-- Riga 4-->
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+        <!-- Riga 5-->
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+        <!-- Riga 6-->
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+            <div> </div>
+            <div></div>
+            <div> </div>
+    </div>
+    <button type="button" onclick="reset();">Ricomincia</button>
+    </div>
+        <div class="carduser2" id ="CU2">
+            <div class="infos">
+                <% if (successLogin) { %>
+                    <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                    <div class="info">
+                        <p class="nomeutente"> Guest </p>
+                        <p class="turno"> Giochi con gli Azzurri </p>
+                        <p class="livello"> Lv. 0</p>
+                    </div>
+                    <% } else { %>
+                        <div class="image"><img src="..\assets\userIcons\guest.png"> </div>
+                        <div class="info">
+                        <p class="nomeutente">Guest 2</p>
+                        <p class="turno"> Giochi con gli Azzurri </p>
+                        <p class="livello"> Lv. 0</p>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+        
+    </div>
+    
+     </div>
+    </div>
+    <div class="container">
+        <div class="popup" id="popup">
+            <h2 id="VincitoreY"> </h2>
+            <h1 id="VincitoreR"> </h1>
+            <h1 id="Pareggio"> </h3>
+            <img src="..\assets\images\winner.png" id="img">
+            <div class="bottoni">
+                <% if (successLogin) { %>
+                    <button type="button" onclick="reset();sendResult('<%= user.username %>');">Rivincita</button>
+                <% } else { %>
+                    <button type="button" onclick="reset();">Rivincita</button> 
+                <% } %>
+                <% if (successLogin) { %>
+                    <a type="button" onclick="sendResult('<%= user.username %>')" href="/games" class="buttonlink">Esci</a> 
+                <% } else { %>
+                    <a type="button" href="/games" class="buttonlink">Esci</a> 
+                <% } %>
+            </div>
+ 
+        </div>   
+
+    </div>
+
+    <script>
+        $(".menu-toggle-btn").click(function(){
+            $(this).toggleClass("fa-times");
+            $(".navbar").toggleClass("active");
+        });
+
+
+
+$(document).ready(function(){
+    Responsive();
+});
+
+$(window).on('resize', function () {
+    Responsive();
+});
+
+function Responsive() {
+    
+    // Studio il primo caso, larghezza compresa tra 1300 e 1000
+    if($(window).width() < '1300' && $(window).width()>'1000' ){
+        // add your scripts here
+
+        $(".Container-Card").append($(".carduser1"));
+        $(".Container-Card").append($(".carduser2"));
+        $(".carduser1").css({'margin-bottom':'50px'});
+        $(".carduser1").css({'margin-top':'100px'});
+        $(".Board").css({'margin-left': '3rem'});
+        $(".Board").css({'margin-right': '3rem'});
+
+       
+    }    
+
+    // Studio il secondo caso, larghezza compresa tra 1000 e
+
+    else if($(window).width() <= '1000'){
+        // add your scripts here
+        $(".Board").css({'margin-left': '0'});
+        $(".Board").css({'margin-right': '0'});
+        $(".PaginaTotale").append($(".carduser1"));
+        $(".PaginaTotale").append($(".carduser2"));
+        $(".carduser1").css({'margin-bottom':'50px'});
+        $(".carduser1").css({'margin-top':'100px'});
+        $(".carduser2").css({'margin-bottom':'50px'});
+    }    
+    else{
+        $(".Container-Card").append($(".carduser1"));
+        $(".flexcontainer").append($(".carduser2"));
+        $(".carduser1").css({'margin-bottom':'0px'});
+        $(".carduser1").css({'margin-top':'0px'});
+        $(".Board").css({'margin-left': '3rem'});
+        $(".Board").css({'margin-right': '3rem'});
+    }
+
+   
+}
+        
+      
+        
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta name="kewords" content="HTML, meta-informazione">
+    <meta name="author" content="Robe-con-Internet">
+    <meta name="generator" content="VSCode">
+
+    <meta charset="UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Base Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="..\..\node_modules\bootstrap\dist\css\bootstrap.css"/>
+
+    <!-- Custom CSS, override the Base Bootstrap CSS (only the declared changes) -->
+    <link rel="stylesheet" href="../stylesheets/msStyle.css">
+
+    <!-- Complete Bootstrap JS -->
+    <script type="application/javascript" src="..\..\node_modules\bootstrap\dist\js\bootstrap.bundle.js"></script>
+    
+    <!-- Custom JS -->
+    <script type="application/javascript" src ="../javascript/msHard.js"></script>
+
+    <!------------------------------------------------------------------------->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" 
+    />
+
+    <!------------------------------------------------------------------------->
+
+    <!-- Window bar of page -->
+    <title>MineSweeper</title>
+    <link rel="icon" type="image/x-icon" href="..\assets\icons\game-over16.png">
+    <link rel="stylesheet" href="../stylesheets/ms.css">
+  </head>
+
+  <body>
+    <!----------------------------------- NAVBAR --------------------------------------->
+    <header>
+      <div class="inner-width">
+      <div class="nomesito">
+          <a href="#" class="logo"><img src="..\..\site\assets\icons\coffeeCup64.png" alt=""></a>
+          <a href="/home"><div class="nome"> CoffeeGames</div></a>
+      </div>
+  
+      <i class="menu-toggle-btn fas fa-bars"></i>
+      
+      <nav class="navbar">
+          <div class="links">
+          <a href="/home">Home</a>
+          <% if (successLogin) { %>
+              <a href="/account">Account</a>
+          <% } %>
+          <a href="/games">Giochi</a>
+          <a href="/contacts">Contatti</a>
+          </div>
+      </nav>
+      </div>
+    </header>   
+    <!--------------------------------- FINE NAVBAR ------------------------------------->
+      
+    <div class="row">
+        <div class="col md-3 justify-content-center">
+          <div class="titolo">CAMPO MINATO</div>
+          <div class="container">
+            <div class="md-3"> 
+              <div class="scritta">Bandiere rimanenti:</div>
+              <span id='flags-left'></span>
+            </div>
+            <div id="result"></div>
+            <% if (successLogin) { %>
+              <a type="button" onclick="sendResult('<%= user.username %>')" href="/games" class="btn mx-auto">Indietro</a>
+            <% } else { %>
+              <a type="button" class="btn mx-auto" href="/games" role="button">Indietro</a>
+            <% } %>
+  
+            <% if (successLogin) { %>
+              <a type="button" onclick="sendResult('<%= user.username %>')" href="/home" class="btn mx-auto">Home</a>
+            <% } else { %>
+              <a type="button" class="btn mx-auto" href="/home" role="button">Home</a>
+            <% } %>
+  
+            <% if (successLogin) { %>
+              <a type="button" onclick="sendResult('<%= user.username %>')" href="/minesweeper/hard" class="btn mx-auto">Nuova Partita</a>
+            <% } else { %> 
+              <a type="button" class="btn mx-auto" href="/minesweeper/hard" role="button">Nuova Partita</a>
+            <% } %>
+          </div>
+        </div>
+  
+        <div class="col d-flex justify-content-center">
+          <div class="gridHard"></div>
+        </div>
+    </div>
+      
+    </body>
+    <script type="text/javascript">
+      var Background = "<%= user.background %>";
+      /*Funzione per il toggle della navbar*/
+      $(".menu-toggle-btn").click(function(){
+              $(this).toggleClass("fa-times");
+              $(".navbar").toggleClass("active");
+          });
+
+    $(document).ready(function(){
+      Responsive();
+      
+      
+      if(Background==0){
+        $("body").addClass("BackgroundNeon");
+        $(".inner-width").addClass("ColoreNeon");
+        $(".container").css({'border-color': 'rgb(10, 89, 238)'});
+        $(".btn").css({'background-color': 'rgb(236, 43, 43)'});
+        $(".btn:hover").css({'background-color': 'rgb(236, 43, 43)'});
+        $(".titolo").addClass(("titoloNeon"));
+        $(".gridEasy").css({'background-color': '#3e98ec'});
+        $(".gridEasy").css({'border-color': '#173450'});
+        $(".gridNormal").css({'background-color': '#da8300'});
+        $(".gridNormal").css({'border-color': '#9e5f00'});
+        $(".gridHard").css({'background-color': '#3e98ec'});
+        $(".gridHard").css({'border-color': '#173450'});
+        $(".gridRR").css({'background-color': '#3e98ec'});
+        $(".gridRR").css({'border-color': '#173450'});
+        $(".validHard").css({'border-color': '#9dcefc #7dbefa #7dbefa #9dcefc'});
+
+        $(".bombHard").css({'background-color' : '#3e98ec'});
+        $(".bombHard").css({'border-color': '#9dcefc #7dbefa #7dbefa #9dcefc'});
+      }
+      if(Background==1){
+        $("body").addClass("BackgroundSteampunk");
+        $(".inner-width").addClass("ColoreSteampunk");
+        $(".titolo").addClass(("titoloSteampunk"));
+
+
+        $(".container").css({'border-color': 'rgb(255, 166, 0)'});
+        $(".btn").css({'background-color': '#da8300'});
+        $(".btn:hover").css({'background-color': '#da8300'});
+        
+        $(".gridEasy").css({'background-color': '#da8300'});
+        $(".gridEasy").css({'border-color': '#9e5f00'});
+        $(".gridNormal").css({'background-color': '#da8300'});
+        $(".gridNormal").css({'border-color': '#9e5f00'});
+        $(".gridHard").css({'background-color': '#da8300'});
+        $(".gridHard").css({'border-color': '#9e5f00'});
+        $(".gridRR").css({'background-color': '#da8300'});
+        $(".gridRR").css({'border-color': '#9e5f00'});
+        $(".validHard").css({'border-color': '#ffc170 #ffac3e #ffac3e #ffc170'});
+
+        $(".bombHard").css({'background-color' : '#da8300'});
+        $(".bombHard").css({'border-color': '#ffc170 #ffac3e #ffac3e #ffc170'});
+      }
+
+      if(Background==2){
+        $("body").addClass("BackgroundTropicale");
+        $(".inner-width").addClass("ColoreTropicale");
+        $(".titolo").addClass(("titoloTropicale"));
+
+
+        $(".container").css({'border-color': 'rgb(116, 179, 139)'});
+        $(".btn").css({'background-color': 'rgb(184, 183, 121)'});
+        $(".btn:hover").css({'background-color': 'rgb(184, 183, 121)'});
+        
+        $(".gridEasy").css({'background-color': '#699b5f'});
+        $(".gridEasy").css({'border-color': '#1d5220'});
+        $(".gridNormal").css({'background-color': '#699b5f'});
+        $(".gridNormal").css({'border-color': '#1d5220'});
+        $(".gridHard").css({'background-color': '#699b5f'});
+        $(".gridHard").css({'border-color': '#1d5220'});
+        $(".gridRR").css({'background-color': '#699b5f'});
+        $(".gridRR").css({'border-color': '#1d5220'});
+        $(".validHard").css({'border-color': '#acd1a4 #3c6636 #3c6636 #acd1a4'});
+        $(".bombHard").css({'background-color' : '#699b5f'});
+        $(".bombHard").css({'border-color': '#acd1a4 #3c6636 #3c6636 #acd1a4'});
+      }
+
+
+    })
+
+  $(window).on('resize', function () {
+    Responsive();
+  });
+
+  function Responsive() {
+
+        if($(window).width() <= '1200'){
+          if(Background==0){
+          $(".navbar").css({'background-color':'#00076db9'});
+        }
+
+          if(Background==1){
+          $(".navbar").css({'background-color':'#5c3400d3'});
+        }
+        if(Background==2){
+          $(".navbar").css({'background-color':'#26550bd3'});
+        }
+      }
+      else{
+        $(".navbar").css({'background-color':'transparent'});
+
+      }
+      
+
+    }
+    
+    </script>
+
+</html>
